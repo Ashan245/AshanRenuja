@@ -61,17 +61,10 @@
         .social-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.4rem; transition: all 0.3s ease; }
         .social-icon:hover { background: #ff3366; transform: translateY(-8px); box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4); }
 
-        /* Chat Widget */
-        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
-        .chat-button { width: 65px; height: 65px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: #fff; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: none; transition: 0.3s; }
-        .chat-window { position: absolute; bottom: 85px; right: 0; width: 280px; background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; display: none; box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(15px); }
-        .chat-window.active { display: block; animation: slideUp 0.3s ease; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .chat-input { width: 100%; padding: 12px; border-radius: 10px; border: none; background: rgba(255,255,255,0.1); color: #fff; margin-top: 12px; outline: none; }
-        .send-btn { background: #ff3366; color: #fff; border: none; padding: 12px; border-radius: 10px; margin-top: 12px; width: 100%; cursor: pointer; font-weight: bold; }
-
         footer { padding: 50px; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
     </style>
+
+    <script src="https://astra.wati.io/widget/astra.js" id="e0e3f7ce-1bc3-4353-bcf2-7c44be0eb42a" data-mode="widget" data-from="instruction" defer></script>
 </head>
 <body>
 
@@ -101,18 +94,8 @@
         </footer>
     </div>
 
-    <div class="chat-widget">
-        <div class="chat-window" id="chatWindow">
-            <h4 style="color: #ff3366;">අශාන්ට පණිවිඩයක් එවන්න..</h4>
-            <input type="text" id="chatMsg" class="chat-input" placeholder="මෙතැන ලියන්න...">
-            <button class="send-btn" onclick="sendToWhatsApp()">WhatsApp හරහා යවන්න</button>
-        </div>
-        <button class="chat-button" onclick="toggleChat()">
-            <i class="fab fa-whatsapp"></i>
-        </button>
-    </div>
-
     <script>
+        // Cursor අනුගමනය කිරීමේ කේතය
         const cursor = document.querySelector('.cursor');
         const follower = document.querySelector('.cursor-follower');
         document.addEventListener('mousemove', (e) => {
@@ -123,18 +106,6 @@
                 follower.style.top = e.clientY + 'px';
             }, 80);
         });
-
-        function toggleChat() {
-            document.getElementById('chatWindow').classList.toggle('active');
-        }
-
-        function sendToWhatsApp() {
-            const msg = document.getElementById('chatMsg').value;
-            if (msg.trim() !== "") {
-                window.open("https://wa.me/94754806291?text=" + encodeURIComponent(msg), '_blank');
-            }
-        }
     </script>
 </body>
-  </html>
-  
+</html>
