@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ සිහින දකින අහස | අශාන් රේණුජ ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a1a; color: #fff; line-height: 1.6; overflow-x: hidden; cursor: none; text-align: center; }
+        
+        /* Cursor Effects */
+        .cursor { width: 10px; height: 10px; background: #ff3366; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: all 0.1s ease; box-shadow: 0 0 20px #ff3366; }
+        .cursor-follower { width: 30px; height: 30px; border: 2px solid rgba(255, 51, 102, 0.3); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.3s ease; }
+        
+        /* Animated Background */
+        .gradient-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; background: linear-gradient(-45deg, #0a0a1a, #1a1a2e, #16213e, #0f3460); background-size: 400% 400%; animation: gradient 15s ease infinite; }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* පාවෙන Profile ඡායාරූපය - 1758767410766.jpg */
+        .profile-img {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            border: 4px solid #ff3366;
+            object-fit: cover;
+            animation: float-profile 4s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        @keyframes float-profile {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* වෙබ් අඩවිය වටේ යන ඡායාරූපය - 1758767366716.jpg */
+        .moving-photo {
+            position: fixed;
+            width: 100px; height: 100px;
+            border-radius: 20px;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.5;
+            animation: move-around 25s linear infinite;
+        }
+        @keyframes move-around {
+            0% { top: 10%; left: 0%; transform: rotate(0deg); }
+            25% { top: 80%; left: 20%; transform: rotate(90deg); }
+            50% { top: 50%; left: 85%; transform: rotate(180deg); }
+            75% { top: 0%; left: 50%; transform: rotate(270deg); }
+            100% { top: 10%; left: 0%; transform: rotate(360deg); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .gradient-text { background: linear-gradient(135deg, #fff, #ff3366, #6a11cb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; font-size: clamp(2.5rem, 8vw, 4.5rem); font-family: 'Playfair Display'; }
+        
+        .social-icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+        .social-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.4rem; transition: all 0.3s ease; }
+        .social-icon:hover { background: #ff3366; transform: translateY(-8px); box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4); }
+
+        /* Chat Widget */
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        .chat-button { width: 65px; height: 65px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: #fff; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.4); border: none; transition: 0.3s; }
+        .chat-window { position: absolute; bottom: 85px; right: 0; width: 280px; background: #1a1a2e; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; display: none; box-shadow: 0 15px 40px rgba(0,0,0,0.6); backdrop-filter: blur(15px); }
+        .chat-window.active { display: block; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-input { width: 100%; padding: 12px; border-radius: 10px; border: none; background: rgba(255,255,255,0.1); color: #fff; margin-top: 12px; outline: none; }
+        .send-btn { background: #ff3366; color: #fff; border: none; padding: 12px; border-radius: 10px; margin-top: 12px; width: 100%; cursor: pointer; font-weight: bold; }
+
+        footer { padding: 50px; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <div class="gradient-bg"></div>
+    
+    <img src="1758767366716.jpg" alt="Moving Photo" class="moving-photo">
+
+    <div class="container">
+        <img src="1758767410766.jpg" alt="Ashan Renuja" class="profile-img">
+
+        <h1 class="gradient-text">අශාන් රේණුජ</h1>
+        <p style="opacity: 0.8; font-size: 1.1rem; margin-top: 10px;">සිහින වලට අලුත් මානයක්</p>
+        
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1GT189uhmk/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@ashanrenuja607" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.linkedin.com/in/ashan-renuja1" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/94754806291" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ashanrenuja889@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+94754806291" class="social-icon"><i class="fas fa-phone"></i></a>
+        </div>
+
+        <footer>
+            &copy; 2026 සිහින දකින අහස | නිර්මාණය: <b>අශාන් රේණුජ</b>
+        </footer>
+    </div>
+
+    <div class="chat-widget">
+        <div class="chat-window" id="chatWindow">
+            <h4 style="color: #ff3366;">අශාන්ට පණිවිඩයක් එවන්න..</h4>
+            <input type="text" id="chatMsg" class="chat-input" placeholder="මෙතැන ලියන්න...">
+            <button class="send-btn" onclick="sendToWhatsApp()">WhatsApp හරහා යවන්න</button>
+        </div>
+        <button class="chat-button" onclick="toggleChat()">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <script>
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        function toggleChat() {
+            document.getElementById('chatWindow').classList.toggle('active');
+        }
+
+        function sendToWhatsApp() {
+            const msg = document.getElementById('chatMsg').value;
+            if (msg.trim() !== "") {
+                window.open("https://wa.me/94754806291?text=" + encodeURIComponent(msg), '_blank');
+            }
+        }
+    </script>
+</body>
+  </html>
+  
